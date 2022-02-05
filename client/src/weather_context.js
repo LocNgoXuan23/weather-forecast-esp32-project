@@ -24,7 +24,10 @@ export const WeatherProvider = ({ children }) => {
     const currentTime = new Date()
 
     try {
-      const response = await axios.get(`/api/v1/predictDatas?temperature=15.6&humidity=70.6&co2=65.4`)
+      const currentDataResponse = await axios.get(`https://api.thingspeak.com/channels/1646188/feeds.json?api_key=BMI6QWOJLJO48STT&results=1`)
+      const { field1, field2, field3 } = currentDataResponse.data.feeds[0]
+
+      const response = await axios.get(`/api/v1/predictDatas?temperature=${field1}&humidity=${field2}&co2=${field3}`)
       const { predTemperature: temperature, predHumidity: humidity, predCo2: co2 } = response.data
       setCurrentTime([weekday[currentTime.getDay()], month[currentTime.getMonth()], currentTime.getDate(), currentTime.getMonth()+1, currentTime.getFullYear(), currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds(), Math.round(temperature), Math.round(humidity), Math.round(co2)])
     } catch (error) {

@@ -23,6 +23,8 @@ const productRouter = require('./routes/productRoutes')
 const cartRouter = require('./routes/cartRoutes')
 const roomRouter = require('./routes/roomRoutes')
 const studentRouter = require('./routes/studentRoutes')
+const sensorDataRouter = require('./routes/sensorDataRoutes')
+const predictDataRouter = require('./routes/predictDataRouters')
 
 // middleware
 const notFoundMiddleware = require('./middleware/not-found')
@@ -40,6 +42,7 @@ app.use('/api/v1/products', productRouter)
 app.use('/api/v1/carts', cartRouter)
 app.use('/api/v1/rooms', roomRouter)
 app.use('/api/v1/students', studentRouter)
+app.use('/api/v1/predictDatas', predictDataRouter)
 
 // app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)

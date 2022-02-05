@@ -9,22 +9,25 @@ import { UserProvider } from './context/user_context'
 import { AdminUserProvider } from './context/admin_user_context'
 import { AdminRoomProvider } from './context/admin_room_context'
 import { AdminBookingProvider } from './context/admin_booking_context'
+import { WeatherProvider } from './weather_context';
 
 ReactDOM.render(
-    <UserProvider>
-        <AdminBookingProvider>
-            <AdminRoomProvider>
-                <AdminUserProvider>
-                    <BookingProvider>
-                        <RoomsProvider>
-                            <ProductsProvider>
-                                <App />
-                            </ProductsProvider>
-                        </RoomsProvider>
-                    </BookingProvider>
-                </AdminUserProvider>
-            </AdminRoomProvider>
-        </AdminBookingProvider>
-    </UserProvider>,
+    <WeatherProvider>
+        <UserProvider>
+            <AdminBookingProvider>
+                <AdminRoomProvider>
+                    <AdminUserProvider>
+                        <BookingProvider>
+                            <RoomsProvider>
+                                <ProductsProvider>
+                                    <App />
+                                </ProductsProvider>
+                            </RoomsProvider>
+                        </BookingProvider>
+                    </AdminUserProvider>
+                </AdminRoomProvider>
+            </AdminBookingProvider>
+        </UserProvider>
+    </WeatherProvider>,
     document.getElementById('root')
 )

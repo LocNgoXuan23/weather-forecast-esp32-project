@@ -30,6 +30,7 @@ const SingleClassPage = () => {
 
   useEffect(() => {
     setLoading(true)
+    // const url = 'http://localhost:5000/api/v1/students/'
     const url = '/api/v1/students/'
     fetchStudents(url)
   }, [id])
